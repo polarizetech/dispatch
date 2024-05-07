@@ -1,7 +1,7 @@
 {
-  "name": "polarizetech/merchant",
-  "description": "Multi-vendor payments support for Laravel (via Stripe Connect)",
-  "version": "0.0.1",
+  "name": "polarizetech/dispatch",
+  "description": "Shipping calculations and label generation for Laravel",
+  "version": "0.0.0",
   "license": "MIT",
   "authors": [
       {
@@ -14,12 +14,12 @@
   },
   "autoload": {
       "psr-4": {
-          "Merchant\\": "src"
+          "Dispatch\\": "src"
       }
   },
   "autoload-dev": {
       "psr-4": {
-          "Merchant\\Tests\\": "tests"
+          "Dispatch\\Tests\\": "tests"
       }
   },
   "config": {
@@ -28,8 +28,11 @@
   "extra": {
       "laravel": {
           "providers": [
-              "Merchant\\MerchantServiceProvider"
+              "Dispatch\\DispatchServiceProvider"
           ]
       }
+  },
+  "require-dev": {
+    "orchestra/testbench": "^9.0"
   }
 }
