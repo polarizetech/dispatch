@@ -56,9 +56,30 @@ const AssignShippingProfile: React.FC<Props> = ({ shippingProfile, renderSidebar
   return (
     <div className={clsx('flex flex-col md:flex-row gap-8', className)}>
       <div className="space-y-6 max-w-lg">
+        <fieldset className="space-y-1">
+          <div className="flex items-center">
+            <InputLabel lang="products.shipping_profile" value={'Shipping profile'} />
+            <Link as="a" target="_blank" href={route('dashboard.shipping-profiles.index')} className="group site-link text-sm font-medium">
+              {'('}<span className="underline group-hover:no-underline">{__('Manage Shipping Profiles')}</span>{')'}
+            </Link>
+          </div>
+
+          <Select
+            name="shipping_pofile_id"
+            value={selected || ''}
+            onChange={event => setSelected(event.target.value ? parseInt(event.target.value) : null)}
+          >
+            <option value="">{__('Custom shipping profile')}</option>
+            {shippingProfiles.map(({ id, name }) => (
+              <option key={id} value={id}>{name}</option>
+            ))}
+          </Select>
+        </fieldset>
+
         <ShippingProfileForm
           shippingProfile={selectedShippingProfile}
           onChange={onChange} />
+
       </div>
 
       <aside className="w-full md:max-w-xs">
